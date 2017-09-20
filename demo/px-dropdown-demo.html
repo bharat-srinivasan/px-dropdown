@@ -1,18 +1,18 @@
 <!-- Common imports -->
-<link rel="import" href="../../polymer/polymer.html" />
+<link rel="import" href="../../polymer/polymer.html"/>
 
 <!-- Common demo imports -->
-<link rel="import" href="../../px-demo/px-demo-header.html" />
-<link rel="import" href="../../px-demo/px-demo-api-viewer.html" />
-<link rel="import" href="../../px-demo/px-demo-footer.html" />
-<link rel="import" href="../../px-demo/px-demo-configs.html" />
-<link rel="import" href="../../px-demo/px-demo-props.html" />
-<link rel="import" href="../../px-demo/px-demo-interactive.html" />
-<link rel="import" href="../../px-demo/px-demo-component-snippet.html" />
-<link rel="import" href="../../px-demo/px-demo-code-editor.html" />
+<link rel="import" href="../../px-demo/px-demo-header.html"/>
+<link rel="import" href="../../px-demo/px-demo-api-viewer.html"/>
+<link rel="import" href="../../px-demo/px-demo-footer.html"/>
+<link rel="import" href="../../px-demo/px-demo-configs.html"/>
+<link rel="import" href="../../px-demo/px-demo-props.html"/>
+<link rel="import" href="../../px-demo/px-demo-interactive.html"/>
+<link rel="import" href="../../px-demo/px-demo-component-snippet.html"/>
+<link rel="import" href="../../px-demo/px-demo-code-editor.html"/>
 
 <!-- Imports for this component -->
-<link rel="import" href="../../px-demo/css/px-demo-styles.html" />
+<link rel="import" href="../../px-demo/css/px-demo-styles.html"/>
 
 <!-- Demo DOM module -->
 <dom-module id="px-dropdown-demo">
@@ -48,6 +48,7 @@
           sort-mode="{{props.sortMode.value}}"
           search-mode="{{props.searchMode.value}}"
           button-style="{{props.buttonStyle.value}}"
+          collapse-multi-after="{{props.collapseMultiAfter.value}}"
           icon="{{props.icon.value}}">
         </px-dropdown>
       </px-demo-component>
@@ -74,12 +75,14 @@
 
       props: {
         type: Object,
-        value: function(){ return this.demoProps; }
+        value: function () {
+          return this.demoProps;
+        }
       },
 
       configs: {
         type: Array,
-        value: function() {
+        value: function () {
           return [
             {
               configName: "Default",
@@ -111,11 +114,11 @@
       items: {
         type: Array,
         defaultValue: [
-          {"key":"1", "val": "iPhone"},
-          {"key":"2", "val": "Android"},
-          {"key":"3", "val": "Blackberry"},
-          {"key":"4", "val": "Windows Phone"},
-          {"key":"5", "val": "Flip Phone", "disabled": true}
+          {"key": "1", "val": "iPhone"},
+          {"key": "2", "val": "Android"},
+          {"key": "3", "val": "Blackberry"},
+          {"key": "4", "val": "Windows Phone"},
+          {"key": "5", "val": "Flip Phone", "disabled": true}
         ],
         inputType: 'code:JSON'
       },
@@ -123,13 +126,13 @@
         type: String,
         defaultValue: 'key',
         inputType: 'dropdown',
-        inputChoices: ['key','val']
+        inputChoices: ['key', 'val']
       },
       buttonStyle: {
         type: String,
         defaultValue: 'default',
         inputType: 'dropdown',
-        inputChoices: ['bare','bare--primary','default','tertiary','icon']
+        inputChoices: ['bare', 'bare--primary', 'default', 'tertiary', 'icon']
       },
       displayValue: {
         type: String,
@@ -153,12 +156,12 @@
         defaultValue: true,
         inputType: 'toggle'
       },
-      hideChevron:{
+      hideChevron: {
         type: Boolean,
         defaultValue: false,
         inputType: 'toggle'
       },
-      allowOutsideScroll:{
+      allowOutsideScroll: {
         type: Boolean,
         defaultValue: false,
         inputType: 'toggle'
@@ -167,6 +170,11 @@
         type: Boolean,
         defaultValue: false,
         inputType: 'toggle'
+      },
+      collapseMultiAfter: {
+        type: Number,
+        defaultValue: 3,
+        inputType: 'number'
       },
       searchMode: {
         type: Boolean,
