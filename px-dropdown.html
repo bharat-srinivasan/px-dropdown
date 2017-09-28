@@ -558,7 +558,8 @@ Custom property | Description
       if (this.multi && this.$.selector.selectedItems.length === 1 && !this.hideSelected) {
         this._displayValueSelected = this.$.selector.selectedItems[0].innerText.trim();
       }
-      else if (this.multi && this.selectedValues.length <= this.collapseMultiAfter && !this.hideSelected) {
+      else if (this.multi && this.selectedValues.length > 0 &&
+        this.selectedValues.length <= this.collapseMultiAfter && !this.hideSelected) {
         var selectedItems = [];
         this.$.selector.selectedItems.forEach(function (selected) {
           selectedItems.push(selected.innerText.trim());
