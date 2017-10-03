@@ -482,6 +482,10 @@ Custom property | Description
         var length = this.items.length,
           selected = [],
           i;
+        // Show search by default when items length exceeds 8
+        if (this.items.length > 8 && !this.searchMode) {
+          this.searchMode = true;
+        }
         for (i = 0; i < length; i++) {
           if (this.items[i].selected !== undefined && this.items[i].selected.toString() === 'true') {
             selected.push(this.items[i][this.selectBy]);
