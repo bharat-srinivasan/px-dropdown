@@ -48,7 +48,8 @@
           sort-mode="{{props.sortMode.value}}"
           search-mode="{{props.searchMode.value}}"
           button-style="{{props.buttonStyle.value}}"
-          collapse-multi-after="{{props.collapseMultiAfter.value}}"
+          collapse-multi-after="{{props.collapseMultiAfter.value}}" ,
+          enable-search-mode-after="{{props.enableSearchModeAfter.value}}"
           icon="{{props.icon.value}}">
         </px-dropdown>
       </px-demo-component>
@@ -172,6 +173,11 @@
         inputType: 'toggle'
       },
       collapseMultiAfter: {
+        type: Number,
+        defaultValue: 3,
+        inputType: 'number'
+      },
+      enableSearchModeAfter: {
         type: Number,
         defaultValue: 3,
         inputType: 'number'

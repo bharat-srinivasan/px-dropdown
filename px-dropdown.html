@@ -326,6 +326,15 @@ Custom property | Description
         type: Boolean,
         value: false
       },
+
+      /**
+       * Search will be auto-enabled after number of items in the list exceeds specified value. Default to 8. This option applies when
+       * explicit search-mode is not enabled.
+       */
+      enableSearchModeAfter: {
+        type: Number,
+        value: 8
+      },
       /**
        * The value of the search box, used for filtering the dropdown
        * items when searchMode is true.
@@ -467,7 +476,7 @@ Custom property | Description
         var computedItems = [];
         items.forEach(function (item, idx) {
           computedItems.push({"key": idx, "val": item});
-        })
+        });
         this.items = computedItems;
       }
       this._updateSelection();
@@ -482,10 +491,6 @@ Custom property | Description
         var length = this.items.length,
           selected = [],
           i;
-        // Show search by default when items length exceeds 8
-        if (this.items.length > 8 && !this.searchMode) {
-          this.searchMode = true;
-        }
         for (i = 0; i < length; i++) {
           if (this.items[i].selected !== undefined && this.items[i].selected.toString() === 'true') {
             selected.push(this.items[i][this.selectBy]);
@@ -498,6 +503,10 @@ Custom property | Description
         else {
           this._displayValueSelected = this.displayValue;
         }
+      }
+      // Show search by default when items length exceeds certain limit
+      if (this.items && this.items.length > this.enableSearchModeAfter && !this.searchMode) {
+        this.searchMode = true;
       }
     },
     /**
